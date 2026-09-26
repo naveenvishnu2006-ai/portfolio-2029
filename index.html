@@ -37,10 +37,10 @@
 <div class="relative group cursor-crosshair">
 <!-- Cutout Stenciled Comic Brutal Banner -->
 <div class="relative bg-inverse-surface text-primary-container px-space-lg py-space-sm transform -rotate-2 group-hover:rotate-0 transition-transform duration-300 shadow-[8px_8px_0px_0px_#4c4546]">
-<span class="block font-display-hero text-display-hero uppercase leading-none font-extrabold tracking-tight text-center">
+<span class="block font-display-hero text-[64px] lg:text-[84px] uppercase leading-none font-extrabold tracking-tight text-center">
                 NAVEEN
               </span>
-<span class="block font-display-hero text-display-hero uppercase leading-none font-extrabold tracking-tight text-center -mt-2">
+<span class="block font-display-hero text-[64px] lg:text-[84px] uppercase leading-none font-extrabold tracking-tight text-center -mt-2">
                 VISHNU
               </span>
 <!-- Halftone Corner Staples / Doodle Marks -->
@@ -442,6 +442,14 @@ function onResize() {
   renderer.setSize(w, h);
 }
 window.addEventListener('resize', onResize);
+
+if (window.ResizeObserver) {
+  new ResizeObserver(() => onResize()).observe(container);
+} else {
+  setTimeout(onResize, 50);
+  setTimeout(onResize, 500);
+}
+
 
 // Clean up
 return function cleanup() {
