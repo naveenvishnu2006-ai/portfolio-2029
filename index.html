@@ -6,19 +6,7 @@
 <section class="scroll-mt-20 relative w-full bg-primary-container text-inverse-surface pt-space-xl pb-space-2xl px-margin-mobile lg:px-margin flex flex-col items-center justify-between min-h-[calc(100vh-80px)] border-b-2 border-surface-container-highest overflow-hidden" id="hero">
 <!-- Liquid Glass Refraction Shader Layer -->
 <!-- Top Technical Metadata Ledger -->
-<div class="w-full flex justify-between items-center z-20 pb-space-md border-b border-surface-container-highest">
-<div class="flex items-center gap-space-sm">
-<span class="inline-block w-2.5 h-2.5 bg-inverse-surface animate-ping"></span>
-<span class="font-label-sm text-label-sm tracking-widest uppercase text-on-surface-variant">FIG 0.1 // DEV ARTIFACT &amp; CODE ARCHIVE</span>
-</div>
-<div class="hidden sm:flex items-center gap-space-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">
-<span>LOC: TAMIL NADU [IN]</span>
-<span>•</span>
-<span>LAT: 11.1271° N</span>
-<span>•</span>
-<span class="px-space-xs py-0.5 bg-inverse-surface text-primary-container font-bold">DEV // 2024 - 2025</span>
-</div>
-</div>
+
 <!-- Massive Brutalist Comic Headline Composition with Interactive 3D Skew Canvas -->
 <div class="relative w-full max-w-7xl my-auto py-space-xl z-20 transition-transform duration-200 ease-out flex flex-col items-center" id="hero-distortion-container">
 <!-- Upper Layer: 2024 + Distressed NAVEEN VISHNU + 2025 -->
@@ -226,9 +214,13 @@ cameraRig.add(power);
 
 // 3. LCD Viewfinder Screen on the FRONT facing the user
 const screenCanvas = document.createElement('canvas');
-screenCanvas.width = 512;
-screenCanvas.height = 384;
+const upscale = 4;
+screenCanvas.width = 512 * upscale;
+screenCanvas.height = 384 * upscale;
 const sCtx = screenCanvas.getContext('2d');
+sCtx.scale(upscale, upscale);
+sCtx.imageSmoothingEnabled = true;
+sCtx.imageSmoothingQuality = 'high';
 
 const screenTexture = new THREE.CanvasTexture(screenCanvas);
 screenTexture.generateMipmaps = false;
@@ -343,18 +335,7 @@ function updateScreenTexture(time) {
 
 
   // Scanline grid
-  sCtx.fillStyle = 'rgba(255, 255, 255, 0.05)';
-  for (let y = 0; y < 384; y += 4) {
-    sCtx.fillRect(0, y, 512, 2);
-  }
-
-  // Digital grain / phosphor noise
-  sCtx.fillStyle = 'rgba(255, 255, 255, 0.16)';
-  for (let i = 0; i < 300; i++) {
-    const nx = Math.random() * 512;
-    const ny = Math.random() * 384;
-    sCtx.fillRect(nx, ny, 1.5, 1.5);
-  }
+  
 
   // Header HUD
   sCtx.font = 'bold 16px monospace';
@@ -913,10 +894,7 @@ return function cleanup() {
 </a>
 </div>
 <!-- Dossier Metadata Baseline -->
-<div class="w-full mt-space-2xl pt-space-md border-t border-surface-container-highest flex flex-col sm:flex-row justify-between items-center text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest gap-2">
-<span>NAVEEN VISHNU · CSE STUDENT · TAMIL NADU, INDIA · LEARN. BUILD. EXPERIMENT. REPEAT.</span>
-<span>INDEX REF: TECH-PORTFOLIO-2024-25</span>
-</div>
+
 </div>
 </section>
 <!-- Script for Dynamic AI Projector Spotlight and Hero Mouse Parallax Warping -->
